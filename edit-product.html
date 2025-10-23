@@ -3,7 +3,7 @@
   <head>
     <!-- Basic Page Info -->
     <meta charset="utf-8" />
-    <title>E-commerce Store</title>
+    <title>DeskApp - Bootstrap Admin Dashboard HTML Template</title>
 
     <!-- Site favicon -->
     <link
@@ -42,12 +42,6 @@
       type="text/css"
       href="vendors/styles/icon-font.min.css"
     />
-  
-    <!-- <link
-      rel="stylesheet"
-      type="text/css"
-      href="src/plugins/datatables/css/responsive.bootstrap4.min.css"
-    /> -->
     <link rel="stylesheet" type="text/css" href="vendors/styles/style.css" />
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -95,6 +89,52 @@
                 class="form-control search-input"
                 placeholder="Search Here"
               />
+              <div class="dropdown">
+                <a
+                  class="dropdown-toggle no-arrow"
+                  href="#"
+                  role="button"
+                  data-toggle="dropdown"
+                >
+                  <i class="ion-arrow-down-c"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <div class="form-group row">
+                    <label class="col-sm-12 col-md-2 col-form-label"
+                      >From</label
+                    >
+                    <div class="col-sm-12 col-md-10">
+                      <input
+                        class="form-control form-control-sm form-control-line"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-12 col-md-2 col-form-label">To</label>
+                    <div class="col-sm-12 col-md-10">
+                      <input
+                        class="form-control form-control-sm form-control-line"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-12 col-md-2 col-form-label"
+                      >Subject</label
+                    >
+                    <div class="col-sm-12 col-md-10">
+                      <input
+                        class="form-control form-control-sm form-control-line"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <button class="btn btn-primary">Search</button>
+                  </div>
+                </div>
+              </div>
             </div>
           </form>
         </div>
@@ -122,7 +162,72 @@
               <i class="icon-copy dw dw-notification"></i>
               <span class="badge notification-active"></span>
             </a>
-          
+            <div class="dropdown-menu dropdown-menu-right">
+              <div class="notification-list mx-h-350 customscroll">
+                <ul>
+                  <li>
+                    <a href="#">
+                      <img src="vendors/images/img.jpg" alt="" />
+                      <h3>John Doe</h3>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit, sed...
+                      </p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <img src="vendors/images/photo1.jpg" alt="" />
+                      <h3>Lea R. Frith</h3>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit, sed...
+                      </p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <img src="vendors/images/photo2.jpg" alt="" />
+                      <h3>Erik L. Richards</h3>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit, sed...
+                      </p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <img src="vendors/images/photo3.jpg" alt="" />
+                      <h3>John Doe</h3>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit, sed...
+                      </p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <img src="vendors/images/photo4.jpg" alt="" />
+                      <h3>Renee I. Hansen</h3>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit, sed...
+                      </p>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <img src="vendors/images/img.jpg" alt="" />
+                      <h3>Vicki M. Coleman</h3>
+                      <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit, sed...
+                      </p>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
         <div class="user-info-dropdown">
@@ -147,7 +252,9 @@
               <a class="dropdown-item" href="profile.html"
                 ><i class="dw dw-settings2"></i> Setting</a
               >
-              
+              <a class="dropdown-item" href="faq.html"
+                ><i class="dw dw-help"></i> Help</a
+              >
               <a class="dropdown-item" href="login.html"
                 ><i class="dw dw-logout"></i> Log Out</a
               >
@@ -155,7 +262,7 @@
           </div>
         </div>
         <div class="github-link">
-          <a href="https://github.com/khuzaimashoaib" target="_blank"
+          <a href="https://github.com/dropways/deskapp" target="_blank"
             ><img src="vendors/images/github.svg" alt=""
           /></a>
         </div>
@@ -366,8 +473,8 @@
                 <li><a href="edit-product.html">Edit Products</a></li>
               </ul>
             </li>
-            
-<!--                        
+
+            <!--                        
            
             <li class="dropdown">
               <a href="javascript:;" class="dropdown-toggle">
@@ -379,7 +486,6 @@
               </ul>
             </li> -->
 
-         
             <!-- <li>
               <a href="invoice.html" class="dropdown-toggle no-arrow">
                 <span class="micon dw dw-invoice"></span
@@ -399,82 +505,30 @@
     <div class="mobile-menu-overlay"></div>
 
     <div class="main-container">
-      <div class="pd-ltr-20">
-        <div class="card-box pd-20 height-100-p mb-30">
-          <div class="row align-items-center">
-            <div class="col-md-4">
-              <img src="vendors/images/banner-img.png" alt="" />
-            </div>
-            <div class="col-md-8">
-              <h4 class="font-20 weight-500 mb-10 text-capitalize">
-                Welcome back
-                <div class="weight-600 font-30 text-blue">Khuzaima Shoaib!</div>
-              </h4>
-              <p class="font-18 max-width-600">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde
-                hic non repellendus debitis iure, doloremque assumenda. Autem
-                modi, corrupti, nobis ea iure fugiat, veniam non quaerat
-                mollitia animi error corporis.
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xl-3 mb-30">
-            <div class="card-box height-100-p widget-style1">
-              <div class="d-flex flex-wrap align-items-center">
-                <div class="progress-data">
-                  <div id="chart"></div>
+      <div class="pd-ltr-20 xs-pd-20-10">
+        <div class="min-height-200px">
+          <div class="page-header">
+            <div class="row">
+              <div class="col-md-12 col-sm-12">
+                <div class="title">
+                  <h4>Edit Product</h4>
                 </div>
-                <div class="widget-data">
-                  <div class="h4 mb-0">2020</div>
-                  <div class="weight-600 font-14">Contact</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-3 mb-30">
-            <div class="card-box height-100-p widget-style1">
-              <div class="d-flex flex-wrap align-items-center">
-                <div class="progress-data">
-                  <div id="chart2"></div>
-                </div>
-                <div class="widget-data">
-                  <div class="h4 mb-0">400</div>
-                  <div class="weight-600 font-14">Deals</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-3 mb-30">
-            <div class="card-box height-100-p widget-style1">
-              <div class="d-flex flex-wrap align-items-center">
-                <div class="progress-data">
-                  <div id="chart3"></div>
-                </div>
-                <div class="widget-data">
-                  <div class="h4 mb-0">350</div>
-                  <div class="weight-600 font-14">Campaign</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-3 mb-30">
-            <div class="card-box height-100-p widget-style1">
-              <div class="d-flex flex-wrap align-items-center">
-                <div class="progress-data">
-                  <div id="chart4"></div>
-                </div>
-                <div class="widget-data">
-                  <div class="h4 mb-0">$6060</div>
-                  <div class="weight-600 font-14">Worth</div>
-                </div>
+                <nav aria-label="breadcrumb" role="navigation">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                      <a href="index.html">Home</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+                      Edit Product
+                    </li>
+                  </ol>
+                </nav>
               </div>
             </div>
           </div>
         </div>
-		
-        <div class="footer-wrap pd-20 mb-20 card-box">
+
+      <div class="footer-wrap pd-20 mb-20 card-box">
           E-commerce Store - Made By
           <a href="https://github.com/khuzaimashoaib" target="_blank"
             >Khuzaima Shoaib</a
@@ -487,7 +541,5 @@
     <script src="vendors/scripts/script.min.js"></script>
     <script src="vendors/scripts/process.js"></script>
     <script src="vendors/scripts/layout-settings.js"></script>
-    <script src="src/plugins/apexcharts/apexcharts.min.js"></script>
-    <script src="vendors/scripts/dashboard.js"></script>
   </body>
 </html>
