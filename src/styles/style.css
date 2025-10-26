@@ -113,7 +113,7 @@ p {
 	justify-content: center;
 }
 .pre-loader .loader-logo{
-	padding-bottom: 15px;
+	padding-bottom: 100px;
 }
 .pre-loader .loader-progress{
 	height: 8px;
@@ -1233,7 +1233,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td:first-child:before, tabl
 
 .header-dark .header,
 .header-dark .header-left .header-search{
-	background: #0B132B;
+	background: #fed700;
 }
 .header-dark .header .user-info-dropdown .dropdown-toggle,
 .header-dark .header .user-info-dropdown .dropdown-toggle .user-name,
@@ -1342,7 +1342,7 @@ table.dataTable.dtr-inline.collapsed>tbody>tr.parent>td:first-child:before, tabl
 	width: 280px;
 	height: 100vh;
 	z-index: 1000;
-	background: #0b132b;
+	background: #fed700;
 	-webkit-transition: all 0.3s ease-in-out;
 	-moz-transition: all 0.3s ease-in-out;
 	-o-transition: all 0.3s ease-in-out;
