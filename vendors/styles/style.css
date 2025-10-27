@@ -832,7 +832,7 @@ textarea.form-control {
   top: 2px;
   left: -30px;
   background-color: transparent;
-  border: 2px solid #1b00ff;
+  border: 2px solid #fed700;
 }
 .custom-control-label::after {
   width: 20px;
@@ -847,7 +847,7 @@ textarea.form-control {
   background-color: none;
 }
 .custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
-  background-color: #1b00ff;
+  background-color: #fed700;
 }
 .custom-checkbox .custom-control-input:checked ~ .custom-control-label::after {
   background-image: url(../images/check-mark.png);
@@ -855,7 +855,7 @@ textarea.form-control {
   background-position: center center;
 }
 .custom-radio .custom-control-input:checked ~ .custom-control-label::before {
-  background-color: #1b00ff;
+  background-color: #fed700;
 }
 .custom-checkbox
   .custom-control-input:disabled:checked
@@ -1889,7 +1889,7 @@ body.IE .register-page-wrap .container {
 }
 .login-box .login-title {
   padding: 0 0 10px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 .login-box .login-title h2 {
   font-size: 24px;

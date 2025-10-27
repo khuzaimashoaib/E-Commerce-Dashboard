@@ -3,25 +3,25 @@
   <head>
     <!-- Basic Page Info -->
     <meta charset="utf-8" />
-    <title>E-commerce Store</title>
+    <title>DeskApp - Bootstrap Admin Dashboard HTML Template</title>
 
     <!-- Site favicon -->
     <link
       rel="apple-touch-icon"
       sizes="180x180"
-      href="vendors/images/logo/cropped-siteicon.png"
+      href="vendors/images/apple-touch-icon.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="32x32"
-      href="vendors/images/logo/cropped-siteicon.png"
+      href="vendors/images/favicon-32x32.png"
     />
     <link
       rel="icon"
       type="image/png"
       sizes="16x16"
-      href="vendors/images/logo/cropped-siteicon.png"
+      href="vendors/images/favicon-16x16.png"
     />
 
     <!-- Mobile Specific Metas -->
@@ -42,8 +42,9 @@
       type="text/css"
       href="vendors/styles/icon-font.min.css"
     />
-
     <link rel="stylesheet" type="text/css" href="vendors/styles/style.css" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
   </head>
   <body>
     <div class="pre-loader">
@@ -79,6 +80,52 @@
                 class="form-control search-input"
                 placeholder="Search Here"
               />
+              <div class="dropdown">
+                <a
+                  class="dropdown-toggle no-arrow"
+                  href="#"
+                  role="button"
+                  data-toggle="dropdown"
+                >
+                  <i class="ion-arrow-down-c"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <div class="form-group row">
+                    <label class="col-sm-12 col-md-2 col-form-label"
+                      >From</label
+                    >
+                    <div class="col-sm-12 col-md-10">
+                      <input
+                        class="form-control form-control-sm form-control-line"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-12 col-md-2 col-form-label">To</label>
+                    <div class="col-sm-12 col-md-10">
+                      <input
+                        class="form-control form-control-sm form-control-line"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-12 col-md-2 col-form-label"
+                      >Subject</label
+                    >
+                    <div class="col-sm-12 col-md-10">
+                      <input
+                        class="form-control form-control-sm form-control-line"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <button class="btn btn-primary">Search</button>
+                  </div>
+                </div>
+              </div>
             </div>
           </form>
         </div>
@@ -119,7 +166,7 @@
               <span class="user-icon">
                 <img src="vendors/images/photo1.jpg" alt="" />
               </span>
-              <span class="user-name">Ross C. Lopez</span>
+              <span class="user-name">Khuzaima Shoaib</span>
             </a>
             <div
               class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
@@ -129,8 +176,7 @@
               >
               <a class="dropdown-item" href="profile.html"
                 ><i class="dw dw-settings2"></i> Setting</a
-              >
-
+              >             
               <a class="dropdown-item" href="login.html"
                 ><i class="dw dw-logout"></i> Log Out</a
               >
@@ -138,7 +184,7 @@
           </div>
         </div>
         <div class="github-link">
-          <a href="https://github.com/khuzaimashoaib" target="_blank"
+          <a href="https://github.com/dropways/deskapp" target="_blank"
             ><img src="vendors/images/github.svg" alt=""
           /></a>
         </div>
@@ -353,19 +399,6 @@
                 <li><a href="orders.html">Orders</a></li>
               </ul>
             </li>
-
-            <!--                        
-           
-            <li class="dropdown">
-              <a href="javascript:;" class="dropdown-toggle">
-                <span class="micon dw dw-right-arrow1"></span
-                ><span class="mtext">Additional Pages</span>
-              </a>
-              <ul class="submenu">
-                <li><a href="login.html">Login</a></li>
-              </ul>
-            </li> -->
-
             <li>
               <a href="" class="dropdown-toggle no-arrow">
                 <i class="micon dw dw-shopping-bag1"></i>
@@ -385,81 +418,29 @@
     <div class="mobile-menu-overlay"></div>
 
     <div class="main-container">
-      <div class="pd-ltr-20">
-        <div class="card-box pd-20 height-100-p mb-30">
-          <div class="row align-items-center">
-            <div class="col-md-4">
-              <img src="vendors/images/banner-img.png" alt="" />
-            </div>
-            <div class="col-md-8">
-              <h4 class="font-20 weight-500 mb-10 text-capitalize">
-                Welcome back
-                <div class="weight-600 font-30 text-blue">Khuzaima Shoaib!</div>
-              </h4>
-              <p class="font-18 max-width-600">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde
-                hic non repellendus debitis iure, doloremque assumenda. Autem
-                modi, corrupti, nobis ea iure fugiat, veniam non quaerat
-                mollitia animi error corporis.
-              </p>
+      <div class="pd-ltr-20 xs-pd-20-10">
+        <div class="min-height-200px">
+          <div class="page-header">
+            <div class="row">
+              <div class="col-md-6 col-sm-12">
+                <div class="title">
+                  <h4>Orders</h4>
+                </div>
+                <nav aria-label="breadcrumb" role="navigation">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                      <a href="index.html">Home</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">
+Orders                    </li>
+                  </ol>
+                </nav>
+              </div>
+              
             </div>
           </div>
+          <div class="pd-20 bg-white border-radius-4 box-shadow mb-30"></div>
         </div>
-        <div class="row">
-          <div class="col-xl-3 mb-30">
-            <div class="card-box height-100-p widget-style1">
-              <div class="d-flex flex-wrap align-items-center">
-                <div class="progress-data">
-                  <div id="chart"></div>
-                </div>
-                <div class="widget-data">
-                  <div class="h4 mb-0">2020</div>
-                  <div class="weight-600 font-14">Contact</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-3 mb-30">
-            <div class="card-box height-100-p widget-style1">
-              <div class="d-flex flex-wrap align-items-center">
-                <div class="progress-data">
-                  <div id="chart2"></div>
-                </div>
-                <div class="widget-data">
-                  <div class="h4 mb-0">400</div>
-                  <div class="weight-600 font-14">Deals</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-3 mb-30">
-            <div class="card-box height-100-p widget-style1">
-              <div class="d-flex flex-wrap align-items-center">
-                <div class="progress-data">
-                  <div id="chart3"></div>
-                </div>
-                <div class="widget-data">
-                  <div class="h4 mb-0">350</div>
-                  <div class="weight-600 font-14">Campaign</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-3 mb-30">
-            <div class="card-box height-100-p widget-style1">
-              <div class="d-flex flex-wrap align-items-center">
-                <div class="progress-data">
-                  <div id="chart4"></div>
-                </div>
-                <div class="widget-data">
-                  <div class="h4 mb-0">$6060</div>
-                  <div class="weight-600 font-14">Worth</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <div class="footer-wrap pd-20 mb-20 card-box">
           E-commerce Store - Made By
           <a href="https://github.com/khuzaimashoaib" target="_blank"
@@ -472,9 +453,6 @@
     <script src="vendors/scripts/core.js"></script>
     <script src="vendors/scripts/script.min.js"></script>
     <script src="vendors/scripts/process.js"></script>
-    <script src="vendors/plugins/apexcharts/apexcharts.min.js"></script>
     <script src="vendors/scripts/layout-settings.js"></script>
-    <script src="vendors/scripts/dashboard.js"></script>
-    <script type="module" src="js/app.js"></script>
   </body>
 </html>

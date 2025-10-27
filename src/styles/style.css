@@ -661,7 +661,7 @@ textarea.form-control{
 	top: 2px;
 	left: -30px;
 	background-color: transparent;
-	border: 2px solid #1b00ff;
+	border: 2px solid #000;
 }
 .custom-control-label::after{
 	width: 20px;
