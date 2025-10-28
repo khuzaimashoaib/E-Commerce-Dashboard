@@ -3,7 +3,9 @@ import { signInUser, getUserSession } from "./auth.js";
 
 const HARDCODED_EMAIL = "khuzaima.shoaib@gmail.com";
 const HARDCODED_PASSWORD = "admin123";
-
+const basePath = window.location.hostname.includes("github.io")
+  ? "/E-Commerce-Dashboard"
+  : "";
 const form = document.getElementById("loginForm");
 
 form.addEventListener("submit", async (e) => {
@@ -21,22 +23,18 @@ form.addEventListener("submit", async (e) => {
 
   if (email === HARDCODED_EMAIL && password === HARDCODED_PASSWORD) {
     const { data, error } = await signInUser(email, password);
-    window.location.href = "/index.html";
-  }
-
-  if (error) {
-    // showToast(error.message);
-    console.error("login error:", error.message);
-    return;
+    if (error) {
+      // showToast(error.message);
+      console.error("login error:", error.message);
+      return;
+    }
+    window.location.href = `${basePath}/index.html`;
   }
 });
 
 const session = async () => {
   const { session } = await getUserSession();
   if (session) {
-    const basePath = window.location.hostname.includes("github.io")
-      ? "/E-Commerce-Dashboard"
-      : "";
     window.location.href = `${basePath}/index.html`;
   }
 };

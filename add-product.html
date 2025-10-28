@@ -6,7 +6,7 @@
     <title>DeskApp - Bootstrap Admin Dashboard HTML Template</title>
 
     <!-- Site favicon -->
-     <link
+    <link
       rel="apple-touch-icon"
       sizes="180x180"
       href="vendors/images/logo/cropped-siteicon.png"
@@ -46,13 +46,16 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.css"
       rel="stylesheet"
     />
-
   </head>
   <body>
     <div class="pre-loader">
       <div class="pre-loader-box">
         <div class="loader-logo">
-          <img src="vendors/images/logo/newlogoblack400.png" alt="" style="width: 200px;"/>
+          <img
+            src="vendors/images/logo/newlogoblack400.png"
+            alt=""
+            style="width: 200px"
+          />
         </div>
         <div class="loader-progress" id="progress_div">
           <div class="bar" id="bar1"></div>
@@ -142,81 +145,11 @@
         </div>
         <div class="user-notification">
           <div class="dropdown">
-            <a
-              class="dropdown-toggle no-arrow"
-              href="#"
-              role="button"
-              data-toggle="dropdown"
-            >
+            <a class="dropdown-toggle no-arrow">
               <i class="icon-copy dw dw-notification"></i>
               <span class="badge notification-active"></span>
             </a>
-            <div class="dropdown-menu dropdown-menu-right">
-              <div class="notification-list mx-h-350 customscroll">
-                <ul>
-                  <li>
-                    <a href="#">
-                      <img src="vendors/images/img.jpg" alt="" />
-                      <h3>John Doe</h3>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit, sed...
-                      </p>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <img src="vendors/images/photo1.jpg" alt="" />
-                      <h3>Lea R. Frith</h3>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit, sed...
-                      </p>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <img src="vendors/images/photo2.jpg" alt="" />
-                      <h3>Erik L. Richards</h3>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit, sed...
-                      </p>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <img src="vendors/images/photo3.jpg" alt="" />
-                      <h3>John Doe</h3>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit, sed...
-                      </p>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <img src="vendors/images/photo4.jpg" alt="" />
-                      <h3>Renee I. Hansen</h3>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit, sed...
-                      </p>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <img src="vendors/images/img.jpg" alt="" />
-                      <h3>Vicki M. Coleman</h3>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit, sed...
-                      </p>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
+            
           </div>
         </div>
         <div class="user-info-dropdown">
@@ -241,11 +174,9 @@
               <a class="dropdown-item" href="profile.html"
                 ><i class="dw dw-settings2"></i> Setting</a
               >
-              <a class="dropdown-item" href="faq.html"
-                ><i class="dw dw-help"></i> Help</a
-              >
+
               <a class="dropdown-item" href="login.html"
-                ><i class="dw dw-logout"></i> Log Out</a
+                ><i class="dw dw-logout"></i>Log Out</a
               >
             </div>
           </div>
@@ -523,10 +454,25 @@
           <!-- Form  Start-->
 
           <div class="pd-20 card-box mb-30">
-            <form>
+            <form id="addProductForm">
+              <div class="row justify-content-between align-items-center p-3">
+                <div class="">
+                  <h2 class="h4">Add New Product</h2>
+                </div>
+                <div class="">
+                  <input
+                    id="saveProductBtn"
+                    class="btn btn-primary btn-md btn-block"
+                    type="submit"
+                    value="Save Product"
+                  />
+                </div>
+              </div>
+
               <div class="form-group">
                 <h4 class="text-black h4">Title</h4>
                 <input
+                  id="title"
                   class="form-control"
                   type="text"
                   placeholder="Product Title"
@@ -549,46 +495,57 @@
                   <div class="form-group">
                     <h4 class="text-black h4">Price</h4>
 
-                    <input type="text" class="form-control" placeholder="Rs." />
+                    <input
+                      id="price"
+                      type="text"
+                      class="form-control"
+                      placeholder="Rs."
+                      required
+                    />
                   </div>
                   <div class="form-group">
                     <h4 class="text-black h4">Category</h4>
-                    <select class="custom-select col-12">
-                      <option selected="">Choose...</option>
-                      <option value="1">Iron</option>
-                      <option value="2">Blender</option>
-                      <option value="3">Juicer</option>
-                      <option value="4">Hand Blender</option>
-                      <option value="5">Sandwitch Maker</option>
-                      <option value="6">Coffee Maker</option>
-                      <option value="7">Air Fryer</option>
-                      <option value="8">Grinder</option>
+                    <select id="category" class="custom-select col-12">
+                      <option value="-">Choose...</option>
+                      <option value="Iron">Iron</option>
+                      <option value="Blender">Blender</option>
+                      <option value="Juicer">Juicer</option>
+                      <option value="Hand Blender">Hand Blender</option>
+                      <option value="Sandwitch Maker">Sandwitch Maker</option>
+                      <option value="Coffee Maker">Coffee Maker</option>
+                      <option value="Air Fryer">Air Fryer</option>
+                      <option value="Grinder">Grinder</option>
                     </select>
-				</div>
-				<div class="form-group">
-					<h4 class="text-black h4">Brand</h4>
-					<select class="custom-select col-12">
-					  <option selected="">Choose...</option>
-					  <option value="1">Anex</option>
-					  <option value="2">Braun</option>
-					  <option value="6">De'Longhi</option>
-					  <option value="3">Philips</option>
-					  <option value="4">Panasonic</option>
-					  <option value="5">Westpoint</option>
-					  <option value="6">Sencor</option>
-					</select>
+                  </div>
+                  <div class="form-group">
+                    <h4 class="text-black h4">Brand</h4>
+                    <select id="brand" class="custom-select col-12">
+                      <option value="-">Choose...</option>
+                      <option value="Anex">Anex</option>
+                      <option value="Braun">Braun</option>
+                      <option value="De'Longhi">De'Longhi</option>
+                      <option value="Philips">Philips</option>
+                      <option value="Panasonic">Panasonic</option>
+                      <option value="Westpoint">Westpoint</option>
+                      <option value="Sencor">Sencor</option>
+                    </select>
                   </div>
                 </div>
               </div>
 
               <div class="form-group">
                 <h4 class="text-black h4">Add Image</h4>
-                <div class="custom-file">
-                  <input type="file" class="custom-file-input" multiple />
-                  <label class="custom-file-label">Select Image</label>
+                <div class="custom-file mb-20">
+                  <input
+                    id="productImages"
+                    type="file"
+                    class="custom-file-input"
+                    multiple
+                  />
+                  <label class="custom-file-label">Select Images</label>
                 </div>
+                <div id="imagePreview" class="d-flex flex-wrap"></div>
               </div>
-              <br />
 
               <div class="form-group">
                 <h4 class="text-black h4">Short Description</h4>
@@ -619,6 +576,7 @@
     <script src="vendors/scripts/process.js"></script>
     <script src="vendors/scripts/layout-settings.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.18/summernote-bs4.min.js"></script>
+    <script type="module" src="js/addProductHandler.js"></script>
 
     <script>
       $(document).ready(function () {

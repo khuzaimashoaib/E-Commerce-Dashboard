@@ -6,9 +6,8 @@ const supabaseKey =
 
 export const supabase = createClient(supabaseUrl, supabaseKey);
 
-
-export async function fetchContacts() {
-  let { data, error } = await supabase.from("contacts").select("*");
+export async function fetchProducts() {
+  let { data, error } = await supabase.from("products").select("*");
   if (error) {
     console.error("Fetch error:", error);
     return;
@@ -16,29 +15,39 @@ export async function fetchContacts() {
   return data;
 }
 
-export async function addContact(first_name, last_name, number, email) {
+export async function addProduct(
+  title,
+  long_des,
+  short_des,
+  price,
+  brand,
+  category,
+  images_urls
+) {
   let { data, error } = await supabase
-    .from("contacts")
-    .insert([{ first_name, last_name, number, email }]);
+    .from("products")
+    .insert([
+      { title, long_des, short_des, price, brand, category, images_urls },
+    ]);
 
   if (error) {
     console.error("Insert error:", error);
-    return;
+    return false;
   }
-
-  return data;
+  console.log(data);
+  return true;
 }
 
-export async function updateContact(id, first_name, last_name, number, email) {
+export async function updateProduct(id, title, long_des, short_des, price) {
   const updateData = {};
 
-  if (first_name) updateData.first_name = first_name;
-  if (last_name) updateData.last_name = last_name;
-  if (number) updateData.number = number;
-  if (email) updateData.email = email;
+  if (title) updateData.title = title;
+  if (long_des) updateData.long_des = long_des;
+  if (short_des) updateData.short_des = short_des;
+  if (price) updateData.price = price;
 
   let { data, error } = await supabase
-    .from("contacts")
+    .from("products")
     .update(updateData)
     .eq("id", id);
 
@@ -46,8 +55,8 @@ export async function updateContact(id, first_name, last_name, number, email) {
   return data;
 }
 
-export async function deleteContact(id) {
-  let { error } = await supabase.from("contacts").delete().eq("id", id);
+export async function deleteProduct(id) {
+  let { error } = await supabase.from("Products").delete().eq("id", id);
 
   if (error) console.error("Delete error:", error);
 }
