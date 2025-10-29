@@ -6,8 +6,8 @@ const supabaseKey =
 
 export const supabase = createClient(supabaseUrl, supabaseKey);
 
-export async function fetchProducts() {
-  let { data, error } = await supabase.from("products").select("*");
+export async function fetchProducts(table) {
+  let { data, error } = await supabase.from(table).select("*");
   if (error) {
     console.error("Fetch error:", error);
     return;
@@ -55,8 +55,9 @@ export async function updateProduct(id, title, long_des, short_des, price) {
   return data;
 }
 
-export async function deleteProduct(id) {
-  let { error } = await supabase.from("Products").delete().eq("id", id);
+export async function deleteProduct(table, id) {
+  let { error } = await supabase.from(table).delete().eq("id", id);
 
   if (error) console.error("Delete error:", error);
+  return {error} ;
 }

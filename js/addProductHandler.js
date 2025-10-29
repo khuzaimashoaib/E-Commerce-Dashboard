@@ -132,12 +132,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (result) {
       alert("✅ Product Added Successfully!");
-      form.reset();
-      previewContainer.innerHTML = "";
-      imageInput.value = "";
-      form.querySelector('input[type="submit"]').blur();
-
-      
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+      // form.reset();
+      // previewContainer.innerHTML = "";
+      // imageInput.value = "";
+      // form.querySelector('input[type="submit"]').blur();
+      // $("#shortDesc").summernote("reset");
+      // $("#longDesc").summernote("reset");
     } else {
       alert("❌ Failed to add product!");
     }

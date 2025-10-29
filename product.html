@@ -423,7 +423,7 @@
                 <a
                   class="btn btn-primary btn-md btn-block"
                   href="add-product.html"
-                  >Add Product</a
+                  >Add New Product</a
                 >
               </div>
             </div>
@@ -432,7 +432,7 @@
               id="DataTables_Table_0_wrapper"
               class="dataTables_wrapper dt-bootstrap4 no-footer"
             >
-              <div class="row">
+               <div class="row ">
                 <div class="col-sm-12 col-md-6"></div>
                 <div class="col-sm-12 col-md-6"></div>
               </div>
@@ -521,11 +521,11 @@
                         </th>
                       </tr>
                     </thead>
-                    <tbody>
-                      <tr role="row" class="odd">
+                    <tbody id="productsTable" >
+                      <!-- <tr role="row" class="odd">
                         <td class="table-plus sorting_1" tabindex="0">
                           <img
-                            src="vendors/images/product-1.jpg"
+                            src=${i}
                             width="70"
                             height="70"
                             alt=""
@@ -560,125 +560,9 @@
                             </div>
                           </div>
                         </td>
-                      </tr>
-                      <tr role="row" class="even">
-                        <td class="table-plus sorting_1" tabindex="0">
-                          <img
-                            src="vendors/images/product-2.jpg"
-                            width="70"
-                            height="70"
-                            alt=""
-                          />
-                        </td>
-                        <td>
-                          <h5 class="font-16">Boots</h5>
-                        </td>
-                        <td>brown</td>
-                        <td>9UK</td>
-                        <td>$900</td>
-                        <td>20</td>
-                        <td style="display: none">
-                          <div class="dropdown">
-                            <a
-                              class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
-                              href="#"
-                              role="button"
-                              data-toggle="dropdown"
-                            >
-                              <i class="dw dw-more"></i>
-                            </a>
-                            <div
-                              class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
-                            >
-                              <a class="dropdown-item" href="#"
-                                ><i class="dw dw-edit2"></i> Edit</a
-                              >
-                              <a class="dropdown-item" href="#"
-                                ><i class="dw dw-delete-3"></i> Delete</a
-                              >
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr role="row" class="odd">
-                        <td class="table-plus sorting_1" tabindex="0">
-                          <img
-                            src="vendors/images/product-3.jpg"
-                            width="70"
-                            height="70"
-                            alt=""
-                          />
-                        </td>
-                        <td>
-                          <h5 class="font-16">Hat</h5>
-                          by Erik L. Richards
-                        </td>
-                        <td>Orange</td>
-                        <td>M</td>
-                        <td>$100</td>
-                        <td>3</td>
-                        <td style="display: none">
-                          <div class="dropdown">
-                            <a
-                              class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
-                              href="#"
-                              role="button"
-                              data-toggle="dropdown"
-                            >
-                              <i class="dw dw-more"></i>
-                            </a>
-                            <div
-                              class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
-                            >
-                              <a class="dropdown-item" href="#"
-                                ><i class="dw dw-edit2"></i> Edit</a
-                              >
-                              <a class="dropdown-item" href="#"
-                                ><i class="dw dw-delete-3"></i> Delete</a
-                              >
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr role="row" class="even">
-                        <td class="table-plus sorting_1" tabindex="0">
-                          <img
-                            src="vendors/images/product-4.jpg"
-                            width="70"
-                            height="70"
-                            alt=""
-                          />
-                        </td>
-                        <td>
-                          <h5 class="font-16">Long Dress</h5>
-                        </td>
-                        <td>Gray</td>
-                        <td>L</td>
-                        <td>$1000</td>
-                        <td>4</td>
-                        <td style="display: none">
-                          <div class="dropdown">
-                            <a
-                              class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
-                              href="#"
-                              role="button"
-                              data-toggle="dropdown"
-                            >
-                              <i class="dw dw-more"></i>
-                            </a>
-                            <div
-                              class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
-                            >
-                              <a class="dropdown-item" href="#"
-                                ><i class="dw dw-edit2"></i> Edit</a
-                              >
-                              <a class="dropdown-item" href="#"
-                                ><i class="dw dw-delete-3"></i> Delete</a
-                              >
-                            </div>
-                          </div>
-                        </td>
-                      </tr>
+                      </tr> -->
+                     
+                      
                     </tbody>
                   </table>
                 </div>
@@ -709,5 +593,6 @@
     <script src="vendors/plugins/datatables/js/dataTables.responsive.min.js"></script>
     <script src="vendors/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
     <script src="vendors/scripts/dashboard.js"></script>
+    <script type="module" src="js/allProductHandler.js"></script>
   </body>
 </html>
