@@ -1,101 +1,7 @@
 import { addProduct } from "./database.js";
+import { uploadImagesToCloudinary } from "./cloudinary.js";
 
-async function uploadImagesToCloudinary(files) {
-  const cloudName = "ddvpnmium";
-  const uploadPreset = "e-commerce-assets";
-  const uploadedUrls = [];
 
-  for (const file of files) {
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("upload_preset", uploadPreset); // ✅ replace with your preset
-
-    const res = await fetch(
-      `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`,
-      {
-        method: "POST",
-        body: formData,
-      }
-    );
-
-    const data = await res.json();
-
-    if (data.secure_url) {
-      uploadedUrls.push(data.secure_url);
-    } else {
-      console.error("Cloudinary Error:", data);
-      alert("❌ Cloudinary Upload Failed:\n" + data.error?.message);
-    }
-
-    // uploadedUrls.push(data.secure_url);
-  }
-
-  return uploadedUrls;
-}
-
-const imageInput = document.getElementById("productImages");
-const previewContainer = document.getElementById("imagePreview");
-
-imageInput.addEventListener("change", () => {
-  const imageFiles = Array.from(imageInput.files);
-  previewContainer.innerHTML = ""; // Clear previous previews
-
-  imageFiles.forEach((file, index) => {
-    const reader = new FileReader();
-
-    reader.onload = (e) => {
-      // image cancel button container
-
-      const wrapper = document.createElement("div");
-      wrapper.style.position = "relative";
-      wrapper.style.display = "inline-block";
-      wrapper.style.marginRight = "8px";
-      wrapper.style.marginBottom = "8px";
-
-      //   cancel btn ka element
-      const btn = document.createElement("button");
-      btn.innerHTML = "×";
-      btn.style.position = "absolute";
-      btn.style.display = "flex";
-      btn.style.justifyContent = "center"; // horizontal center
-      btn.style.alignItems = "center";
-      btn.style.top = "0";
-      btn.style.right = "0";
-      btn.style.background = "rgba(0,0,0,0.6)";
-      btn.style.color = "white";
-      btn.style.border = "none";
-      btn.style.borderRadius = "50%";
-      btn.style.width = "20px";
-      btn.style.height = "20px";
-      btn.style.cursor = "pointer";
-      btn.style.lineHeight = "1";
-
-      btn.addEventListener("click", () => {
-        wrapper.remove(); // Remove from DOM
-        imageFiles.splice(index, 1); // Remove from files array
-        imageInput.files = createFileList(imageFiles); // Update input files
-      });
-
-      //   img ka element
-      const img = document.createElement("img");
-      img.src = e.target.result;
-      img.style.width = "100px";
-      img.style.height = "100px";
-      //   img.style.marginRight = "10px";
-      //   img.style.marginBottom = "10px";
-      img.style.objectFit = "cover";
-      img.style.border = "1px solid #ccc";
-      img.style.borderRadius = "5px";
-      previewContainer.appendChild(img);
-
-      wrapper.appendChild(img);
-      wrapper.appendChild(btn);
-      previewContainer.appendChild(wrapper);
-    };
-
-    reader.readAsDataURL(file);
-  });
-});
 function createFileList(files) {
   const dataTransfer = new DataTransfer();
   files.forEach((file) => dataTransfer.items.add(file));
@@ -103,6 +9,74 @@ function createFileList(files) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  const imageInput = document.getElementById("productImages");
+  const previewContainer = document.getElementById("imagePreview");
+
+  imageInput.addEventListener("change", () => {
+    const imageFiles = Array.from(imageInput.files);
+    previewContainer.innerHTML = ""; // Clear previous previews
+
+    imageFiles.forEach((file, index) => {
+      const reader = new FileReader();
+
+      reader.onload = (e) => {
+        // image cancel button container
+
+        const wrapper = document.createElement("div");
+        wrapper.style.position = "relative";
+        wrapper.style.display = "inline-block";
+        wrapper.style.marginRight = "8px";
+        wrapper.style.marginBottom = "8px";
+
+        //   cancel btn ka element
+        const btn = document.createElement("button");
+        btn.innerHTML = "×";
+        btn.style.position = "absolute";
+        btn.style.display = "flex";
+        btn.style.justifyContent = "center"; // horizontal center
+        btn.style.alignItems = "center";
+        btn.style.top = "0";
+        btn.style.right = "0";
+        btn.style.background = "rgba(0,0,0,0.6)";
+        btn.style.color = "white";
+        btn.style.border = "none";
+        btn.style.borderRadius = "50%";
+        btn.style.width = "20px";
+        btn.style.height = "20px";
+        btn.style.cursor = "pointer";
+        btn.style.lineHeight = "1";
+
+        btn.addEventListener("click", () => {
+          wrapper.remove(); // Remove from DOM
+          imageFiles.splice(index, 1); // Remove from files array
+          imageInput.files = createFileList(imageFiles); // Update input files
+        });
+
+        //   img ka element
+        const img = document.createElement("img");
+        img.src = e.target.result;
+        img.style.width = "100px";
+        img.style.height = "100px";
+        img.style.objectFit = "cover";
+        img.style.border = "1px solid #ccc";
+        img.style.borderRadius = "5px";
+        previewContainer.appendChild(img);
+
+        wrapper.appendChild(img);
+        wrapper.appendChild(btn);
+        previewContainer.appendChild(wrapper);
+      };
+
+      reader.readAsDataURL(file);
+    });
+  });
+  $("#shortDesc, #longDesc").each(function () {
+    const isShort = $(this).attr("id") === "shortDesc";
+    $(this).summernote({
+      height: 200,
+      placeholder: isShort ? "Short Description ..." : "Long Description ...",
+    });
+  });
   const form = document.getElementById("addProductForm");
 
   form.addEventListener("submit", async (event) => {
@@ -146,3 +120,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+window.uploadImagesToCloudinary = uploadImagesToCloudinary;

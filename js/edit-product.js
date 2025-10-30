@@ -1,18 +1,21 @@
-import { fetchProducts } from "./database.js";
+import { fetchProducts, updateProduct } from "./database.js";
+import { uploadImagesToCloudinary } from "./cloudinary.js";
 
 const urlParams = new URLSearchParams(window.location.search);
 const productId = urlParams.get("id");
 
+let product = null;
+let newImageFiles = [];
+
+// Load product from DB
 async function loadProductForEdit(id) {
   const products = await fetchProducts("products");
-  const product = products.find((p) => p.id === id);
-  console.log(products.long_des);
-
-  return product;
+  return products.find((p) => p.id === id) || null;
 }
 
+// Populate edit form
 async function populateEditForm() {
-  const product = await loadProductForEdit(productId);
+  product = await loadProductForEdit(productId);
 
   if (!product) return alert("Product not found!");
 
@@ -21,8 +24,7 @@ async function populateEditForm() {
   document.getElementById("category").value = product.category;
   document.getElementById("brand").value = product.brand;
 
-  console.log("product.long_des", product.long_des);
-
+  // Summernote init
   $("#shortDesc, #longDesc").each(function () {
     const isShort = $(this).attr("id") === "shortDesc";
     $(this).summernote({
@@ -34,20 +36,153 @@ async function populateEditForm() {
   $("#longDesc").summernote("code", product.long_des || "");
   $("#shortDesc").summernote("code", product.short_des || "");
 
-  if (product.images_urls && product.images_urls.length > 0) {
-    const imgPreview = document.getElementById("imagePreview");
-    if (imgPreview) {
-      imgPreview.innerHTML = ""; // clear previous
-      product.images_urls.forEach((url) => {
-        const img = document.createElement("img");
-        img.src = url;
-        img.width = 100;
-        img.height = 100;
-        img.classList.add("mr-2"); // spacing
-        imgPreview.appendChild(img);
-      });
-    } // image tag for preview
+  renderImages(product.images_urls || []);
+
+  const imageInput = document.getElementById("productImages");
+  if (imageInput) {
+    imageInput.addEventListener("change", async () => {
+      const files = Array.from(imageInput.files);
+      newImageFiles = [...newImageFiles, ...files];
+      showTemporaryPreview(files);
+      imageInput.value = "";
+    });
   }
 }
+function showTemporaryPreview(files) {
+  const imgPreview = document.getElementById("imagePreview");
 
-document.addEventListener("DOMContentLoaded", populateEditForm);
+  files.forEach((file) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const wrapper = document.createElement("div");
+      wrapper.style.position = "relative";
+      wrapper.style.display = "inline-block";
+      wrapper.style.marginRight = "8px";
+      wrapper.style.marginBottom = "8px";
+      wrapper.setAttribute("data-temp", "true"); 
+
+      const img = document.createElement("img");
+      img.src = e.target.result;
+      img.style.width = "100px";
+      img.style.height = "100px";
+      img.style.objectFit = "cover";
+      img.style.border = "1px solid #ccc";
+      img.style.borderRadius = "5px";
+
+      const btn = document.createElement("button");
+      btn.innerHTML = "×";
+      btn.style.position = "absolute";
+      btn.style.top = "0";
+      btn.style.right = "0";
+      btn.style.background = "rgba(0,0,0,0.6)";
+      btn.style.color = "white";
+      btn.style.border = "none";
+      btn.style.borderRadius = "50%";
+      btn.style.width = "20px";
+      btn.style.height = "20px";
+      btn.style.cursor = "pointer";
+      btn.style.lineHeight = "1";
+      btn.style.display = "flex";
+      btn.style.justifyContent = "center";
+      btn.style.alignItems = "center";
+
+      btn.addEventListener("click", () => {
+        newImageFiles = newImageFiles.filter((f) => f !== file);
+        wrapper.remove();
+      });
+
+      wrapper.appendChild(img);
+      wrapper.appendChild(btn);
+      imgPreview.appendChild(wrapper);
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+// Render images with delete buttons
+function renderImages(images) {
+  const imgPreview = document.getElementById("imagePreview");
+  const existingImages = imgPreview.querySelectorAll('div:not([data-temp="true"])');
+  existingImages.forEach((img) => img.remove());
+
+  images.forEach((url, index) => {
+    const wrapper = document.createElement("div");
+    wrapper.style.position = "relative";
+    wrapper.style.display = "inline-block";
+    wrapper.style.marginRight = "8px";
+    wrapper.style.marginBottom = "8px";
+
+    const img = document.createElement("img");
+    img.src = url;
+    img.style.width = "100px";
+    img.style.height = "100px";
+    img.style.objectFit = "cover";
+    img.style.border = "1px solid #ccc";
+    img.style.borderRadius = "5px";
+
+    const btn = document.createElement("button");
+    btn.innerHTML = "×";
+    btn.style.position = "absolute";
+    btn.style.top = "0";
+    btn.style.right = "0";
+    btn.style.background = "rgba(0,0,0,0.6)";
+    btn.style.color = "white";
+    btn.style.border = "none";
+    btn.style.borderRadius = "50%";
+    btn.style.width = "20px";
+    btn.style.height = "20px";
+    btn.style.cursor = "pointer";
+    btn.style.lineHeight = "1";
+    btn.style.display = "flex";
+    btn.style.justifyContent = "center";
+    btn.style.alignItems = "center";
+
+    btn.addEventListener("click", () => {
+      product.images_urls.splice(index, 1); // remove from array
+      renderImages(product.images_urls); // re-render
+    });
+
+    wrapper.appendChild(img);
+    wrapper.appendChild(btn);
+    imgPreview.appendChild(wrapper);
+  });
+}
+
+// Form submit
+document.addEventListener("DOMContentLoaded", () => {
+  populateEditForm();
+
+  const editProductbtn = document.getElementById("editProductBtn");
+
+  editProductbtn.addEventListener("click", async (e) => {
+    e.preventDefault();
+
+    if (!product) return alert("Product data missing!");
+    let uploadedUrls = [];
+    if (newImageFiles.length > 0) {
+      uploadedUrls = await uploadImagesToCloudinary(newImageFiles);
+    }
+
+    const updatedData = {
+      title: document.getElementById("title").value,
+      price: parseFloat(document.getElementById("price").value) || 0,
+      category: document.getElementById("category").value,
+      brand: document.getElementById("brand").value,
+      long_des: $("#longDesc").summernote("code"),
+      short_des: $("#shortDesc").summernote("code"),
+      images_urls: [...product.images_urls, ...uploadedUrls],
+    };
+
+    const { error } = await updateProduct("products", productId, updatedData);
+
+    if (error) {
+      console.error(error);
+      alert("Update failed!");
+    } else {
+      alert("Product updated successfully ✅");
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+    }
+  });
+});

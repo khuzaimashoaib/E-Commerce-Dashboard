@@ -1,28 +1,28 @@
 import { fetchProducts } from "./database.js";
 import { handleEdit, handleDelete } from "./productAction.js";
 
-
-
-
 export async function loadProducts() {
   const products = await fetchProducts("products");
 
-if ($.fn.DataTable.isDataTable("#DataTables_Table_0")) {
+  if ($.fn.DataTable.isDataTable("#DataTables_Table_0")) {
     $("#DataTables_Table_0").DataTable().clear().destroy();
     $("#productsTable").empty(); // ✅ Clear tbody
   }
-
 
   const tableBody = document.getElementById("productsTable");
 
   tableBody.innerHTML = "";
 
   products.forEach((item) => {
+    const imageUrl =
+      item.images_urls && item.images_urls.length > 0
+        ? item.images_urls[0]
+        : "vendors/images/placeholder.png";
     const row = `
       <tr role="row" class="odd">
                         <td class="table-plus sorting_1" tabindex="0">
                           <img
-                            src=" ${item.images_urls[0]}"
+                            src="${imageUrl} "
                             width="70"
                             height="70"
                             alt=""/>
@@ -61,15 +61,13 @@ if ($.fn.DataTable.isDataTable("#DataTables_Table_0")) {
     tableBody.insertAdjacentHTML("beforeend", row);
   });
 
-
-  document.querySelectorAll(".edit-btn").forEach(btn => {
+  document.querySelectorAll(".edit-btn").forEach((btn) => {
     btn.addEventListener("click", () => handleEdit(btn.dataset.id));
   });
 
-  document.querySelectorAll(".delete-btn").forEach(btn => {
+  document.querySelectorAll(".delete-btn").forEach((btn) => {
     btn.addEventListener("click", () => handleDelete(btn.dataset.id));
   });
-
 
   $("#DataTables_Table_0").DataTable({
     pageLength: 10, // ✅ Entries per page

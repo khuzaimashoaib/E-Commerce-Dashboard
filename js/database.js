@@ -38,26 +38,31 @@ export async function addProduct(
   return true;
 }
 
-export async function updateProduct(id, title, long_des, short_des, price) {
+export async function updateProduct(table, id, updatedData) {
   const updateData = {};
 
-  if (title) updateData.title = title;
-  if (long_des) updateData.long_des = long_des;
-  if (short_des) updateData.short_des = short_des;
-  if (price) updateData.price = price;
+  for (const key in updatedData) {
+    if (updatedData[key] !== undefined) {
+      updateData[key] = updatedData[key];
+    }
+  }
 
-  let { data, error } = await supabase
-    .from("products")
+  const { data, error } = await supabase
+    .from(table)
     .update(updateData)
     .eq("id", id);
 
-  if (error) console.error("Update error:", error);
-  return data;
+  if (error) {
+    console.error("Update failed:", error);
+    return { error };
+  }
+
+  return { data };
 }
 
 export async function deleteProduct(table, id) {
   let { error } = await supabase.from(table).delete().eq("id", id);
 
   if (error) console.error("Delete error:", error);
-  return {error} ;
+  return { error };
 }

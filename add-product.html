@@ -149,7 +149,6 @@
               <i class="icon-copy dw dw-notification"></i>
               <span class="badge notification-active"></span>
             </a>
-            
           </div>
         </div>
         <div class="user-info-dropdown">
@@ -394,22 +393,9 @@
               <ul class="submenu">
                 <li><a href="product.html">Products</a></li>
                 <li><a href="add-product.html">Add Products</a></li>
-                <li><a href="edit-product.html">Edit Products</a></li>
+                <li><a href="orders.html">Orders</a></li>
               </ul>
             </li>
-
-            <!--                        
-           
-            <li class="dropdown">
-              <a href="javascript:;" class="dropdown-toggle">
-                <span class="micon dw dw-right-arrow1"></span
-                ><span class="mtext">Additional Pages</span>
-              </a>
-              <ul class="submenu">
-                <li><a href="login.html">Login</a></li>
-              </ul>
-            </li> -->
-
             <li>
               <a href="" class="dropdown-toggle no-arrow">
                 <i class="micon dw dw-shopping-bag1"></i>
@@ -579,17 +565,17 @@
     <script type="module" src="js/addProductHandler.js"></script>
 
     <script>
-      $(document).ready(function () {
-        $("#shortDesc, #longDesc").each(function () {
-          const isShort = $(this).attr("id") === "shortDesc";
-          $(this).summernote({
-            height: 200,
-            placeholder: isShort
-              ? "Short Description ..."
-              : "Long Description ...",
-          });
-        });
-      });
+      // $(document).ready(function () {
+      //   $("#shortDesc, #longDesc").each(function () {
+      //     const isShort = $(this).attr("id") === "shortDesc";
+      //     $(this).summernote({
+      //       height: 200,
+      //       placeholder: isShort
+      //         ? "Short Description ..."
+      //         : "Long Description ...",
+      //     });
+      //   });
+      // });
     </script>
   </body>
 </html>
