@@ -1,4 +1,4 @@
-import { supabase } from "./database.js";
+import { supabase, } from "./database.js";
 
 
 export const signInUser = async (email, password) => {
@@ -31,3 +31,5 @@ export const getUserSession = async () => {
   console.log("Session data:", data);
   return data;
 };
+
+

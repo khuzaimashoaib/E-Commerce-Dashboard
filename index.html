@@ -3,7 +3,7 @@
   <head>
     <!-- Basic Page Info -->
     <meta charset="utf-8" />
-    <title>E-commerce Store</title>
+    <title>E-commerce Dashboard</title>
 
     <!-- Site favicon -->
     <link
@@ -42,11 +42,15 @@
       type="text/css"
       href="vendors/styles/icon-font.min.css"
     />
-
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendors/plugins/sweetalert2/sweetalert2.css"
+    />
     <link rel="stylesheet" type="text/css" href="vendors/styles/style.css" />
   </head>
   <body>
-    <div class="pre-loader">
+    <!-- <div class="pre-loader">
       <div class="pre-loader-box">
         <div class="loader-logo">
           <img
@@ -61,7 +65,7 @@
         <div class="percent" id="percent1">0%</div>
         <div class="loading-text">Loading...</div>
       </div>
-    </div>
+    </div> -->
 
     <div class="header">
       <div class="header-left">
@@ -117,9 +121,9 @@
               data-toggle="dropdown"
             >
               <span class="user-icon">
-                <img src="vendors/images/photo1.jpg" alt="" />
+                <img src="vendors/images/profile.jpg" alt="" />
               </span>
-              <span class="user-name">Ross C. Lopez</span>
+              <span class="user-name">Khuzaima Shoaib</span>
             </a>
             <div
               class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
@@ -127,11 +131,8 @@
               <a class="dropdown-item" href="profile.html"
                 ><i class="dw dw-user1"></i> Profile</a
               >
-              <a class="dropdown-item" href="profile.html"
-                ><i class="dw dw-settings2"></i> Setting</a
-              >
 
-              <a class="dropdown-item" href="login.html"
+              <a class="dropdown-item" id="logoutBtn" href="#"
                 ><i class="dw dw-logout"></i> Log Out</a
               >
             </div>
@@ -367,7 +368,11 @@
             </li> -->
 
             <li>
-              <a href="" class="dropdown-toggle no-arrow">
+              <a
+                href="https://khuzaimashoaib.github.io/E-Commerce-Store/"
+                target="_blank"
+                class="dropdown-toggle no-arrow"
+              >
                 <i class="micon dw dw-shopping-bag1"></i>
                 <span class="mtext">Visit Store</span>
               </a>
@@ -383,7 +388,6 @@
       </div>
     </div>
     <div class="mobile-menu-overlay"></div>
-
     <div class="main-container">
       <div class="pd-ltr-20">
         <div class="card-box pd-20 height-100-p mb-30">
@@ -408,32 +412,6 @@
           </div>
         </div>
         <div class="row">
-          <!-- <div class="col-xl-4 mb-30">
-            <div class="card-box height-100-p widget-style1">
-              <div class="d-flex flex-wrap align-items-center">
-                <div class="progress-data">
-                  <div id="chart"></div>
-                </div>
-                <div class="widget-data">
-                  <div class="h4 mb-0">2020</div>
-                  <div class="weight-600 font-14">Orders</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-4 mb-30">
-            <div class="card-box height-100-p widget-style1">
-              <div class="d-flex flex-wrap align-items-center">
-                <div class="progress-data">
-                  <div id="chart2"></div>
-                </div>
-                <div class="widget-data">
-                  <div class="h4 mb-0">400</div>
-                  <div class="weight-600 font-14">Users</div>
-                </div>
-              </div>
-            </div>
-          </div> -->
           <div class="col-xl-4 mb-30">
             <div class="card-box height-100-p widget-style1">
               <div
@@ -445,7 +423,7 @@
                 </div>
 
                 <div class="widget-data" style="flex: 1; text-align: center">
-                  <div class="h4 mb-0" id="totalOrders"></div>
+                  <div class="h4 mb-0" id="totalOrders">0</div>
                   <div class="weight-600 font-14">Orders</div>
                 </div>
               </div>
@@ -462,7 +440,7 @@
                 </div>
 
                 <div class="widget-data" style="flex: 1; text-align: center">
-                  <div class="h4 mb-0" id="totalProducts"></div>
+                  <div class="h4 mb-0" id="totalProducts">0</div>
                   <div class="weight-600 font-14">Products</div>
                 </div>
               </div>
@@ -479,7 +457,7 @@
                 </div>
 
                 <div class="widget-data" style="flex: 1; text-align: center">
-                  <div class="h4 mb-0" id="totalUsers"></div>
+                  <div class="h4 mb-0" id="totalUsers">0</div>
                   <div class="weight-600 font-14">Users</div>
                 </div>
               </div>
@@ -495,6 +473,7 @@
         </div>
       </div>
     </div>
+
     <!-- js -->
     <script src="vendors/scripts/core.js"></script>
     <script src="vendors/scripts/script.min.js"></script>
@@ -504,5 +483,9 @@
     <script src="vendors/scripts/dashboard.js"></script>
     <script type="module" src="js/app.js"></script>
     <script type="module" src="js/dashboard.js"></script>
+
+    <script src="vendors/plugins/sweetalert2/sweetalert2.all.js"></script>
+
+    <script src="vendors/plugins/sweetalert2/sweet-alert.init.js"></script>
   </body>
 </html>

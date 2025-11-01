@@ -8,7 +8,7 @@ async function loadDashboardCounts() {
   document.getElementById("totalOrders").textContent = orders.length;
 
   const users = await fetchProducts("users");
-  document.getElementById("totalUsers").textContent = users.length;
+  document.getElementById("totalUsers").textContent = users.length ?? 0;
 }
 
 document.addEventListener("DOMContentLoaded", loadDashboardCounts);
