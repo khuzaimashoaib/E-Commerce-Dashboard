@@ -1,7 +1,6 @@
 import { addProduct } from "./database.js";
 import { uploadImagesToCloudinary } from "./cloudinary.js";
 
-
 function createFileList(files) {
   const dataTransfer = new DataTransfer();
   files.forEach((file) => dataTransfer.items.add(file));
@@ -105,18 +104,25 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(typeof price, price);
 
     if (result) {
-      alert("✅ Product Added Successfully!");
-      setTimeout(() => {
+      Swal.fire({
+        text: "Product Added Successfully!",
+        icon: "success",
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2000,
+      }).then(() => {
         window.location.reload();
-      }, 1000);
-      // form.reset();
-      // previewContainer.innerHTML = "";
-      // imageInput.value = "";
-      // form.querySelector('input[type="submit"]').blur();
-      // $("#shortDesc").summernote("reset");
-      // $("#longDesc").summernote("reset");
+      });
     } else {
-      alert("❌ Failed to add product!");
+      Swal.fire({
+        text: "Failed to add product!",
+        icon: "error",
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2000,
+      });
     }
   });
 });

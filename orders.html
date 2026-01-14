@@ -6,7 +6,7 @@
     <title>Orders</title>
 
     <!-- Site favicon -->
-   <link
+    <link
       rel="apple-touch-icon"
       sizes="180x180"
       href="vendors/images/logo/cropped-siteicon.png"
@@ -43,6 +43,16 @@
       href="vendors/styles/icon-font.min.css"
     />
     <link rel="stylesheet" type="text/css" href="vendors/styles/style.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendors/plugins/datatables/css/dataTables.bootstrap4.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="vendors/plugins/sweetalert2/sweetalert2.css"
+    />
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
   </head>
@@ -395,10 +405,170 @@
               </div>
             </div>
           </div>
-          <div class="pd-20 bg-white border-radius-4 box-shadow mb-30"></div>
+          <div class="card-box mb-30">
+            <div
+              class="row justify-content-between align-items-center px-5 py-4"
+            >
+              <div class="">
+                <h2 class="h4">All Orders</h2>
+              </div>
+              <!-- <div class="">
+                <a
+                  class="btn btn-primary btn-md btn-block"
+                  href="add-product.html"
+                  >Add New Product</a
+                >
+              </div> -->
+            </div>
+
+            <div
+              id="DataTables_Table_0_wrapper"
+              class="dataTables_wrapper dt-bootstrap4 no-footer"
+            >
+              <div class="row">
+                <div class="col-sm-12 col-md-6"></div>
+                <div class="col-sm-12 col-md-6"></div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <table
+                    class="data-table table nowrap dataTable no-footer dtr-inline collapsed"
+                    id="DataTables_Table_0"
+                    role="grid"
+                  >
+                    <thead>
+                      <tr role="row">
+                        <th
+                          class="datatable-nosort sorting_disabled"
+                          rowspan="1"
+                          colspan="1"
+                          style="width: 149px"
+                          aria-label="Product"
+                        >
+                          Order ID
+                        </th>
+                        <th
+                          class="datatable-nosort sorting_disabled"
+                          tabindex="0"
+                          aria-controls="DataTables_Table_0"
+                          rowspan="1"
+                          colspan="1"
+                          style="width: 250px"
+                          aria-label="Name: activate to sort column ascending"
+                        >
+                          Email
+                        </th>
+                        <th
+                          class="datatable-nosort sorting_disabled"
+                          tabindex="0"
+                          aria-controls="DataTables_Table_0"
+                          rowspan="1"
+                          colspan="1"
+                          style="width: 116px"
+                          aria-label="Price: activate to sort column ascending"
+                        >
+                          Name
+                        </th>
+                        <th
+                          class="datatable-nosort sorting_disabled"
+                          tabindex="0"
+                          aria-controls="DataTables_Table_0"
+                          rowspan="1"
+                          colspan="1"
+                          style="width: 99px"
+                          aria-label="Category: activate to sort column ascending"
+                        >
+                          Address
+                        </th>
+                        <th
+                          class="datatable-nosort sorting_disabled"
+                          tabindex="0"
+                          aria-controls="DataTables_Table_0"
+                          rowspan="1"
+                          colspan="1"
+                          style="width: 112px"
+                          aria-label="Brand: activate to sort column ascending"
+                        >
+                          Phone No
+                        </th>
+                        <th
+                          class="datatable-nosort sorting_disabled"
+                          tabindex="0"
+                          aria-controls="DataTables_Table_0"
+                          rowspan="1"
+                          colspan="1"
+                          style="width: 112px"
+                          aria-label="Sku: activate to sort column ascending"
+                        >
+                          Total Amount
+                        </th>
+
+                        <th
+                          class="datatable-nosort sorting_disabled"
+                          rowspan="1"
+                          colspan="1"
+                          style="width: 114px; display: none"
+                          aria-label="Action"
+                        >
+                          Action
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody id="productsTable">
+                      <!-- <tr role="row" class="odd">
+                        <td class="table-plus sorting_1" tabindex="0">
+                          <img
+                            src=${i}
+                            width="70"
+                            height="70"
+                            alt=""
+                          />
+                        </td>
+                        <td>
+                          <h5 class="font-16">Shirt</h5>
+                        </td>
+                        <td>Black</td>
+                        <td>M</td>
+                        <td>$1000</td>
+                        <td>1</td>
+                        <td style="display: none">
+                          <div class="dropdown">
+                            <a
+                              class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
+                              href="#"
+                              role="button"
+                              data-toggle="dropdown"
+                            >
+                              <i class="dw dw-more"></i>
+                            </a>
+                            <div
+                              class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
+                            >
+                              <a class="dropdown-item" href="#"
+                                ><i class="dw dw-edit2"></i> Edit</a
+                              >
+                              <a class="dropdown-item" href="#"
+                                ><i class="dw dw-delete-3"></i> Delete</a
+                              >
+                            </div>
+                          </div>
+                        </td>
+                      </tr> -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12 col-md-5"></div>
+                <div class="col-sm-12 col-md-7"></div>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="pd-20 bg-white border-radius-4 box-shadow mb-30"></div> -->
         </div>
+
         <div class="footer-wrap pd-20 mb-20 card-box">
-          E-commerce Store - Made By
+          E-commerce Dashboard - Made By
           <a href="https://github.com/khuzaimashoaib" target="_blank"
             >Khuzaima Shoaib</a
           >
@@ -410,6 +580,13 @@
     <script src="vendors/scripts/script.min.js"></script>
     <script src="vendors/scripts/process.js"></script>
     <script src="vendors/scripts/layout-settings.js"></script>
+    <script src="vendors/plugins/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="vendors/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+    <script src="vendors/plugins/datatables/js/dataTables.responsive.min.js"></script>
+    <script src="vendors/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="vendors/scripts/dashboard.js"></script>
+    <script type="module" src="js/allOrderHandler.js"></script>
     <script type="module" src="js/app.js"></script>
   </body>
 </html>

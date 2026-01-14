@@ -16,19 +16,16 @@ const setupLogout = () => {
   if (logoutBtn) {
     logoutBtn.addEventListener("click", async () => {
       await signOutUser();
-      SweetAlert({
+      Swal.fire({
+        icon: "success",
+        text: "You have been successfully logged out!",
         toast: true,
         position: "top-end",
-        icon: "success",
-        title: "Welcome back!",
         showConfirmButton: false,
         timer: 2000,
-        timerProgressBar: true,
-      });
-
-      setTimeout(() => {
+      }).then(() => {
         window.location.href = `${basePath}/login.html`;
-      }, 1500);
+      });
     });
   }
 };

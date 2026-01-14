@@ -17,18 +17,51 @@ form.addEventListener("submit", async (e) => {
   const password = passwordInput.value.trim();
 
   if (!email || !password) {
-    console.log("Please enter both email and password");
+    Swal.fire({
+      icon: "warning",
+      text: "Please enter both email and password",
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 2000,
+    });
+
     return;
   }
 
   if (email === HARDCODED_EMAIL && password === HARDCODED_PASSWORD) {
     const { data, error } = await signInUser(email, password);
     if (error) {
-      // showToast(error.message);
-      console.error("login error:", error.message);
+      Swal.fire({
+        icon: "error",
+        text: "Login failed. Please try again.",
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2000,
+      });
       return;
     }
-    window.location.href = `${basePath}/index.html`;
+    Swal.fire({
+      icon: "success",
+      text: "You have been successfully logged in!",
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 2000,
+    }).then(() => {
+      window.location.href = `${basePath}/index.html`;
+    });
+  } else {
+    // Wrong credentials
+    Swal.fire({
+      icon: "error",
+      text: "Invalid Credentials",
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 1500,
+    });
   }
 });
 
@@ -40,9 +73,3 @@ const session = async () => {
 };
 
 session();
-
-
-
-
-
-

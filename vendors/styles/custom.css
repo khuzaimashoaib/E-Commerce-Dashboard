@@ -1,0 +1,33 @@
+.login-wrap {
+  background-image: url("../images/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.login-page {
+  background-image: url("vendors/images/bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* Liquid glass effect on login box */
+.login-box {
+  background: rgba(255, 255, 255, 0.60) !important;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37) !important;
+  border-radius: 10px;
+}
+
+/* Optional: Add smooth transition */
+.login-box {
+  transition: all 0.3s ease;
+}
+
+.login-box:hover {
+  background: rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.45) !important;
+}

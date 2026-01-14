@@ -17,7 +17,17 @@ async function loadProductForEdit(id) {
 async function populateEditForm() {
   product = await loadProductForEdit(productId);
 
-  if (!product) return alert("Product not found!");
+  if (!product) {
+    window.Swal.fire({
+      text: "Product not found!",
+      icon: "error",
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 2000,
+    });
+    return;
+  }
 
   document.getElementById("title").value = product.title;
   document.getElementById("price").value = product.price;
@@ -59,7 +69,7 @@ function showTemporaryPreview(files) {
       wrapper.style.display = "inline-block";
       wrapper.style.marginRight = "8px";
       wrapper.style.marginBottom = "8px";
-      wrapper.setAttribute("data-temp", "true"); 
+      wrapper.setAttribute("data-temp", "true");
 
       const img = document.createElement("img");
       img.src = e.target.result;
@@ -102,7 +112,9 @@ function showTemporaryPreview(files) {
 // Render images with delete buttons
 function renderImages(images) {
   const imgPreview = document.getElementById("imagePreview");
-  const existingImages = imgPreview.querySelectorAll('div:not([data-temp="true"])');
+  const existingImages = imgPreview.querySelectorAll(
+    'div:not([data-temp="true"])'
+  );
   existingImages.forEach((img) => img.remove());
 
   images.forEach((url, index) => {
@@ -157,7 +169,14 @@ document.addEventListener("DOMContentLoaded", () => {
   editProductbtn.addEventListener("click", async (e) => {
     e.preventDefault();
 
-    if (!product) return alert("Product data missing!");
+    if (!product) {
+      Swal.fire({
+        text: "Product data missing!",
+        icon: "warning",
+        confirmButtonColor: "#3085d6",
+      });
+      return;
+    }
     let uploadedUrls = [];
     if (newImageFiles.length > 0) {
       uploadedUrls = await uploadImagesToCloudinary(newImageFiles);
@@ -177,12 +196,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (error) {
       console.error(error);
-      alert("Update failed!");
+      Swal.fire({
+        text: "Update failed!",
+        icon: "error",
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 2000,
+      });
     } else {
-      alert("Product updated successfully ✅");
-      setTimeout(() => {
+      Swal.fire({
+        text: "Product updated successfully!",
+        icon: "success",
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 1500,
+      }).then(() => {
         window.location.reload();
-      }, 1000);
+      });
     }
   });
 });
